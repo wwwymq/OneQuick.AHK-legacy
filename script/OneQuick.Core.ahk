@@ -987,9 +987,13 @@ class OneQuick
 }
 
 ; event callback
-OnClipboardChange:
-RunArr(OneQuick.OnClipboardChangeCmd)
-Return
+; 修正了剪切板和offic等软件冲突的问题
+OnClipboardChange("ClipChanged")
+return
+
+ClipChanged(Type) {
+	RunArr(OneQuick.OnClipboardChangeCmd)
+}
 
 Sub_OnExit:
 RunArr(OneQuick.OnExitCmd)
